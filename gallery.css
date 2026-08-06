@@ -1,4 +1,22 @@
 /* ==========================
+   CSS Variables (Design System)
+========================== */
+
+:root {
+    --primary-color: #2563eb;
+    --hover-color: #1d4ed8;
+    --bg-color: #f4f4f4;
+    --card-bg: #ffffff;
+    --text-color: #333333;
+    --text-light: #666666;
+    --border-color: #dddddd;
+    --radius: 10px;
+    --shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    --shadow-hover: 0 10px 24px rgba(0, 0, 0, 0.18);
+    --transition: 0.3s ease;
+}
+
+/* ==========================
    Universal Reset
 ========================== */
 
@@ -16,8 +34,8 @@
 
 body {
     font-family: "Inter", sans-serif;
-    background-color: #f4f4f4;
-    color: #333;
+    background: var(--bg-color);
+    color: var(--text-color);
     line-height: 1.6;
     padding: 1.5rem;
 }
@@ -37,7 +55,7 @@ h1 {
 }
 
 header p {
-    color: #666;
+    color: var(--text-light);
 }
 
 /* ==========================
@@ -55,10 +73,18 @@ header p {
 ========================== */
 
 .gallery-card {
-    background: white;
-    border-radius: 10px;
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius);
     padding: 1rem;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--shadow);
+    transition: transform var(--transition),
+                box-shadow var(--transition);
+}
+
+.gallery-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-hover);
 }
 
 .gallery-card h3 {
@@ -68,7 +94,7 @@ header p {
 
 .gallery-card p {
     margin-top: 1rem;
-    color: #555;
+    color: var(--text-light);
 }
 
 /* ==========================
@@ -79,7 +105,71 @@ header p {
     max-width: 100%;
     height: auto;
     display: block;
-    border-radius: 8px;
+    border-radius: calc(var(--radius) - 2px);
+}
+
+/* ==========================
+   Buttons
+========================== */
+
+button {
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: var(--radius);
+    padding: 0.75rem 1.5rem;
+    cursor: pointer;
+    transition: background var(--transition),
+                transform var(--transition);
+}
+
+button:hover {
+    background: var(--hover-color);
+}
+
+button:active {
+    transform: scale(.98);
+}
+
+/* ==========================
+   Navigation Links
+========================== */
+
+nav a {
+    position: relative;
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: color var(--transition);
+}
+
+nav a:hover {
+    color: var(--hover-color);
+}
+
+nav a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    width: 0;
+    height: 2px;
+    background: var(--hover-color);
+    transition: width var(--transition);
+}
+
+nav a:hover::after {
+    width: 100%;
+}
+
+/* ==========================
+   Accessibility
+========================== */
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible {
+    outline: 3px solid var(--primary-color);
+    outline-offset: 3px;
 }
 
 /* ==========================
