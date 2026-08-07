@@ -1,22 +1,11 @@
-// Variables
-
-const traineeName = "Benjamin";
-const traineeAge = 25;
-const isHired = true;
-const monthlySalary = 350000;
-
-let specialty;
-
-specialty = "Full Stack Developer";
-
-// Template Literal
-
-const summary = `
-Trainee ${traineeName} is ${traineeAge} years old.
-Specialty: ${specialty}.
-Hired: ${isHired}.
-`;
-
-// Print to the console
-
-console.log(summary);
+for (let i = 1; i <= 50; i++) {
+    if (i % 3 === 0 && i % 5 === 0) {
+        console.log("FizzBuzz");
+    } else if (i % 3 === 0) {
+        console.log("Fizz");
+    } else if (i % 5 === 0) {
+        console.log("Buzz");
+    } else {
+        console.log(i);
+    }
+}
