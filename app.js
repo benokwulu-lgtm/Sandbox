@@ -1,44 +1,43 @@
-// Addition
-const add = (a, b) => {
-    return a + b;
-};
-
-// Subtraction
-const subtract = (a, b) => {
-    return a - b;
-};
-
-// Multiplication
-const multiply = (a, b) => {
-    return a * b;
-};
-
-// Division
-const divide = (a, b) => {
-    if (b === 0) {
-        return "Error: Division by zero is not allowed";
+// Step 2 — Create the Tasks Array
+const tasks = [
+    {
+        id: 1,
+        title: "Complete JavaScript lesson",
+        completed: true
+    },
+    {
+        id: 2,
+        title: "Practice array methods",
+        completed: false
+    },
+    {
+        id: 3,
+        title: "Review JavaScript objects",
+        completed: true
+    },
+    {
+        id: 4,
+        title: "Build the task manager",
+        completed: false
+    },
+    {
+        id: 5,
+        title: "Submit Week 4 assignment",
+        completed: false
     }
+];
 
-    return a / b;
-};
+// Step 3 — Filter Pending Tasks
+const pendingTasks = tasks.filter(
+    task => task.completed === false
+);
 
-// Coordinator function
-const operate = (operator, a, b) => {
-    if (operator === "+") {
-        return add(a, b);
-    } else if (operator === "-") {
-        return subtract(a, b);
-    } else if (operator === "*") {
-        return multiply(a, b);
-    } else if (operator === "/") {
-        return divide(a, b);
-    } else {
-        return "Error: Invalid operator";
-    }
-};
+// Step 4 — Format the Pending Tasks
+const formattedTasks = pendingTasks.map(
+    task => `Task #${task.id}: ${task.title} (Status: Pending)`
+);
 
-
-// Test the calculator
-console.log(operate("+", 10, 5));
-console.log(operate("/", 10, 0));
-console.log(operate("*", 4, 3));
+// Step 5 — Log Each Task
+formattedTasks.forEach(taskString => {
+    console.log(taskString);
+});
